@@ -5,17 +5,17 @@ import Search from '../../img/search.png'
 const Section1Lending = () => {
     return (
         <section className='max-w-full  '>
-            <div className='bg-yellow-200	'>
+            <div className='bg-sky-300	'>
                 <div className='max-w-screen-xl relative mx-auto'>
                     <div className='  h-64	'>
-                        <p className='text-5xl absolute bottom-0 mb-5'>
+                        <p className='text-5xl font-light	 absolute bottom-0 mb-5'>
                             Знайди фахівця та виріши <br/>
                             свою проблему
                         </p>
                     </div>
                 </div>
             </div>
-            <div className='bg-sky-300'>
+            <div className=' bg-yellow-200'>
                 <div className='max-w-screen-xl relative mx-auto'>
                     <div className='h-64 flex'>
                         <div className='mt-5 flex left-0 absolute'>
@@ -34,3 +34,4 @@ const Section1Lending = () => {
 };
 
 export default Section1Lending;
+

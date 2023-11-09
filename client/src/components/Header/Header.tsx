@@ -5,7 +5,7 @@ import Login from '../../img/pngwing.com.png'
 
 const Header = () => {
     return (
-        <header className='bg-zinc-300 max-w-full h-72px'>
+        <header className='bg-zinc-200 max-w-full h-72px'>
             <div className='max-w-screen-xl	flex justify-between mx-auto py-2'>
                 <div className='flex items-center	'>
                     <img className='w-14 h-14 mr-1' src={Logo} alt=""/>
