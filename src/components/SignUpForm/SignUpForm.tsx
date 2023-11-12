@@ -11,14 +11,14 @@ const SignUpForm = () => {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
-            surname: '',
-            phone: '',
             email: '',
             password: '',
             photo: "1",
-            role:'user',
-            type:'sosi'
+            name: '',
+            surname: '',
+            phone: '',
+            type:'sosi',
+            role:'user'
 
         },
         // onSubmit: values => {
@@ -26,7 +26,7 @@ const SignUpForm = () => {
         // },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post('http://localhost:5555/users', values);
+                const response = await axios.post(process.env.BACK_PORT || "http://localhost:5555/users", values);
 
                 // if (response.status === 201) {
                     alert(JSON.stringify(response.data, null, 2));
