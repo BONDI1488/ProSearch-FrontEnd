@@ -1,7 +1,8 @@
 import React from 'react';
 import Logo from '../../img/logo12123.png';
 import classes from "./Header.module.css";
-import Login from '../../img/pngwing.com.png'
+import Login from '../../img/pngwing.com.png';
+import SignUpForm from "../SignUpForm/SignUpForm";
 
 const Header = () => {
     return (
@@ -28,3 +29,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
