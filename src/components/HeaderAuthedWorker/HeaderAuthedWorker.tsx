@@ -4,7 +4,14 @@ import classes from "./Header.module.css";
 import Login from '../../img/pngwing.com.png';
 import SignUpForm from "../SignUpForm/SignUpForm";
 
-const HeaderAuthed = () => {
+const HeaderAuthedWorker = () => {
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+
+    };
+
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
             <div className='max-w-screen-xl	flex justify-between mx-auto py-2'>
@@ -22,12 +29,14 @@ const HeaderAuthed = () => {
                 <div className='flex items-center	'>
                     <img className='w-12 h-12 mr-1' src={Login} alt=""/>
                     <a className='text-lg' href='#'>Залогінився</a>
+                    <button onClick={handleLogout} className='text-lg'>Вийти</button>
+
                 </div>
             </div>
         </header>
     );
 };
 
-export default HeaderAuthed;
+export default HeaderAuthedWorker;
 
 

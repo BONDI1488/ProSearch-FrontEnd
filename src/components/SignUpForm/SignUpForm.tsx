@@ -23,7 +23,7 @@ const SignUpForm = () => {
         onSubmit: async (values) => {
             try {
                 const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration", values);
-
+                window.location.reload();
             } catch (error) {
                 console.error(error);
             }
@@ -33,7 +33,10 @@ const SignUpForm = () => {
     return (
 
         <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6'>
+           <div className='flex'>
             <p className="text-3xl font-bold tracking-tight	mb-5">Реєстрація</p>
+
+           </div>
             <div className=' bg-black h-px  mb-5 '></div>
             <div className="mb-3">
                 <label htmlFor="name" className="text-sm font-light tracking-tight text-gray-500">Ім'я</label>
