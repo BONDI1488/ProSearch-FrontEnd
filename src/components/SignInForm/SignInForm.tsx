@@ -1,29 +1,33 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import showImg from '../../img/show.png';
 import hideImg from '../../img/hide.png';
-import classes from "./SignUpForm.module.css";
 import axios from 'axios';
+import classes from "./SignInForm.module.css";
+const SignInForm = () => {
 
-const SignUpForm = () => {
-
+    const [token, setToken] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(JSON.parse(storedToken));
+        }
+    }, []);
 
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: '',
-            photo: "1",
-            name: '',
-            surname: '',
-            phone: '',
-            role:'user'
-
+            password: ''
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration", values);
-
+                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/login", values);
+                const receivedToken = response.data;
+                setToken(receivedToken);
+                localStorage.setItem('token', JSON.stringify(receivedToken));
+                console.log(JSON.stringify(response.data, null, 2));
             } catch (error) {
                 console.error(error);
             }
@@ -35,42 +39,6 @@ const SignUpForm = () => {
         <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6'>
             <p className="text-3xl font-bold tracking-tight	mb-5">Реєстрація</p>
             <div className=' bg-black h-px  mb-5 '></div>
-            <div className="mb-3">
-                <label htmlFor="name" className="text-sm font-light tracking-tight text-gray-500">Ім'я</label>
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.name}
-                    className="border p-2  w-full  rounded-lg "
-                />
-            </div>
-
-            <div className="mb-3">
-                <label htmlFor="surname" className="text-sm font-light	tracking-tight text-gray-500">Прізвище</label>
-                <input
-                    id="surname"
-                    name="surname"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.surname}
-                    className="border p-2  w-full rounded-lg"
-                />
-            </div>
-
-            <div className="mb-3">
-                <label htmlFor="phone" className="text-sm font-light	tracking-tight text-gray-500">Номер телефону</label>
-                <input
-                    id="phone"
-                    name="phone"
-                    type="text"
-                    onChange={formik.handleChange}
-                    value={formik.values.phone}
-                    className="border p-2  w-full rounded-lg"
-                />
-            </div>
-
             <div className="mb-3">
                 <label htmlFor="email" className="text-sm font-light	tracking-tight text-gray-500">Ел. почта</label>
                 <input
@@ -109,10 +77,11 @@ const SignUpForm = () => {
             </div>
 
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Зареєструватися</button>
-            <a href="#" className={classes.a}>Я вже зареєстрований</a>
+            <a href="#" className={classes.a}>Зареєструватись</a>
         </form>
 
     );
 };
 
-export default SignUpForm;
+
+export default SignInForm;
