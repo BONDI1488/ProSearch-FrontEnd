@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {useFormik} from 'formik';
 import showImg from '../../img/show.png';
 import hideImg from '../../img/hide.png';
 import axios from 'axios';
 import classes from "./SignInForm.module.css";
+import {InterfaceContext} from "../../context";
 
 interface SignInFormProps {
     handleCloseModal: () => void;
@@ -11,6 +12,7 @@ interface SignInFormProps {
 
 const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
     const [showPassword, setShowPassword] = useState(false);
+    const { toggleSingupFormDisplay, isSignupFormDisplay} = useContext(InterfaceContext)
 
     const formik = useFormik({
         initialValues: {
@@ -30,11 +32,15 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
         },
     });
 
+    const toggleSignUpForm = () => {
+        toggleSingupFormDisplay(!isSignupFormDisplay)
+    }
+    // винисти цю функцію, бо вона дублюєтся
+
 
     return (
 
-        <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg
-'>
+        <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg'>
             <div className='flex'>
                 <p className="text-3xl font-bold tracking-tight	mb-5">Вхід</p>
                 <button onClick={handleCloseModal} className={classes.closeButton}>
@@ -81,7 +87,7 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
             </div>
 
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Увійти</button>
-            <a href="#" className={classes.a}>Зареєструватись</a>
+            <button onClick={toggleSignUpForm} className={classes.a}>Зареєструватись</button>
         </form>
 
     );

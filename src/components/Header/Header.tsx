@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Logo from '../../img/logo12123.png';
 import classes from "./Header.module.css";
 import Login from '../../img/pngwing.com.png';
 import SignUpForm from "../SignUpForm/SignUpForm";
 import SignInForm from "../SignInForm/SignInForm";
+import {InterfaceContext} from "../../context";
 const Header = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
+    const {isSignupFormDisplay} = useContext(InterfaceContext)
 
     const handleSignInClick = () => {
         setShowSignInModal(true);
     };
+
+    console.log('isSignupFormDisplay ', isSignupFormDisplay)
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
             <div className='max-w-screen-xl	flex justify-between mx-auto py-2'>
@@ -30,11 +34,11 @@ const Header = () => {
                 </div>
             </div>
             {showSignInModal && (
-                <div className={classes.modalOverlay}>
                     <div className={classes.modal}>
-                        <SignInForm handleCloseModal={() => setShowSignInModal(false)} />
+                        {!isSignupFormDisplay ?
+                            <SignInForm handleCloseModal={() => setShowSignInModal(false)} />
+                        : <SignUpForm />}
                     </div>
-                </div>
             )}
         </header>
     );

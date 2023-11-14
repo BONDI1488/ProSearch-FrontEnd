@@ -1,4 +1,4 @@
-import React from 'react';
-
+import { InterfaceContext } from './InterfaceContext'
 export {
+    InterfaceContext
 };
