@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import classes from "./FormForRegisterWorker.module.css";
 import User from "../../img/pngwing.com.png";
 import {useFormik} from 'formik';
 import showImg from '../../img/show.png';
 import hideImg from '../../img/hide.png';
 import axios from 'axios';
+import CitiesData from "./CitiesData/CitiesData";
 
 const FormForRegisterWorker = () => {
 
@@ -13,26 +14,11 @@ const FormForRegisterWorker = () => {
     const [selectedCity, setSelectedCity] = useState('');
 
 
-    useEffect(() => {
-        // Замість 'YOUR_GEONAMES_USERNAME' вставте свій логін з Geonames
-        const username = 'bondi1488';
+    // Обробник зміни значення інпуту
+    const handleInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSelectedCity(event.target.value);
+    };
 
-        // Зробіть запит до API Geonames для отримання списку міст України
-        axios.get(`http://api.geonames.org/searchJSON?country=UA&maxRows=1000&username=${username}`)
-            .then(response => {
-                // Отримайте дані про міста з відповіді
-                const cityData = response.data.geonames;
-
-                // Отримайте список міст з даних про міста
-                const cityList = cityData.map((city: { name: string }) => city.name);
-
-                // Встановіть список міст у стан компонента
-                setCities(cityList);
-            })
-            .catch(error => {
-                console.error('Error fetching city data:', error);
-            });
-    }, []);
 
     const formik = useFormik({
         initialValues: {
@@ -197,22 +183,22 @@ const FormForRegisterWorker = () => {
                                 <label htmlFor="female">Жінка</label>
                             </div>
                         </div>
-                        <div>
-                            <label htmlFor="city">Виберіть місто:</label>
+
+                        <div className="mb-3 mt-3 flex items-center">
+                            <label className="text-sm mr-2 font-light tracking-tight text-gray-500">Виберіть місто:</label>
                             <select
-                                id="city"
-                                name="city"
-                                onChange={(e) => setSelectedCity(e.target.value)}
                                 value={selectedCity}
-                                className="border p-2 rounded-lg"
+                                onChange={handleInputChange}
+                                className="border p-2 rounded-md"
                             >
-                                <option value="" disabled>Оберіть місто</option>
-                                {cities.map(city => (
-                                    <option key={city} value={city}>{city}</option>
+                                <option value="">Оберіть місто</option>
+                                {CitiesData.map((city, index) => (
+                                    <option key={index} value={city}>
+                                        {city}
+                                    </option>
                                 ))}
                             </select>
                         </div>
-
 
                     </div>
                 </div>

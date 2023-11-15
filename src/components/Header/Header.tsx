@@ -37,7 +37,7 @@ const Header = () => {
                     <div className={classes.modal}>
                         {!isSignupFormDisplay ?
                             <SignInForm handleCloseModal={() => setShowSignInModal(false)} />
-                        : <SignUpForm />}
+                        : <SignUpForm/>}
                     </div>
             )}
         </header>

@@ -22,6 +22,8 @@ export const Main = () => {
         setShowSignInModal(false);
     };
 
+
+
     const token = localStorage.getItem('token');
 
     return (
@@ -37,8 +39,6 @@ export const Main = () => {
             <Section4Lending/>
             <Section5Lending/>
             <Footer/>
-            <SignUpForm/>
-            <div className='my-8'></div>
             {showSignInModal && (
                 <div className={classes.modalOverlay}>
                     <div className={classes.modal}>

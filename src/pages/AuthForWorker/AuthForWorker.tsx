@@ -4,12 +4,15 @@ import Footer from "../../components/Footer/Footer";
 import classes from "./AuthForWorker.module.css";
 import User from "../../img/pngwing.com.png";
 import FormForRegisterWorker from "../../components/FormForRegisterWorker/FormForRegisterWorker";
-const AuthForWorker = () => {
+import { Link } from 'react-router-dom';
 
+const AuthForWorker = () => {
     return (
         <div className='max-w-full'>
-            <Header/>
-            <FormForRegisterWorker/>
+            <Header />
+            <FormForRegisterWorker />
+
+
 
             {/*<Footer/>*/}
         </div>
