@@ -28,9 +28,11 @@ const HeaderAuthedUser = () => {
                 </div>
                 <div className='flex items-center	'>
                     <img className='w-12 h-12 mr-1' src={Login} alt=""/>
-                    <a className='text-lg' href='#'>Залогінився</a>
-                    <button onClick={handleLogout} className='text-lg'>Вийти</button>
-
+                    <div className='pl-4'>
+                        <p className='text-lg'>Профіль</p>
+                        <p className='text-sm text-gray-500'>Замовника</p>
+                    </div>
+                        <button onClick={handleLogout} className='text-sm'>Вийти</button>
                 </div>
             </div>
         </header>

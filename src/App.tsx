@@ -8,7 +8,7 @@ function App() {
     return (
         <Providers>
             <Routes>
-                <Route path="/" element={<AuthForWorker />} />
+                <Route path="/" element={<Main />} />
                 <Route path="/auth-for-worker" element={<AuthForWorker />} />
             </Routes>
         </Providers>
