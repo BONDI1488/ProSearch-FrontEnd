@@ -12,13 +12,23 @@ const FormForRegisterWorker = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [cities, setCities] = useState([]);
     const [selectedCity, setSelectedCity] = useState('');
+    const [userPhoto, setUserPhoto] = useState(User);
 
-    // Обробник зміни значення інпуту
     const handleInputChange = (event: ChangeEvent<HTMLSelectElement>) => {
-
         setSelectedCity(event.target.value);
     };
+    const changePhoto = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
 
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const result = reader.result as string;
+                setUserPhoto(result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -48,11 +58,24 @@ const FormForRegisterWorker = () => {
 
     return (
         <form action="" className='pb-9'>
-
+//TODO подивитись чи норм фотка відправляється
             <div className='max-w-screen-lg mx-auto'>
                 <p className='text-center text-4xl my-12'>Реєстрація Фахівця</p>
-                <img src={User} alt="" className='w-44 h-44'/>
-                <div className='flex  justify-between '>
+                <img
+                    src={userPhoto}
+                    alt=""
+                    className='w-44 h-44 cursor-pointer rounded-full'
+                    onClick={() => document.getElementById('photoInput')?.click()}
+                />
+                <input
+                    type="file"
+                    id="photoInput"
+                    name="photo"
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    onChange={changePhoto}
+                />
+                <div className='flex  justify-between pt-7'>
                     <div className='w-6/12'>
 
                         <div className="flex justify-between items-center">
@@ -121,6 +144,7 @@ const FormForRegisterWorker = () => {
                             </div>
 
                         </div>
+                        //TODO зробити щоб при відправці перевірялось чи користувач правильно ввів другий пароль
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="password" className="text-sm  mr-2 font-light	tracking-tight text-gray-500">Повторіть
                                 пароль:</label>
@@ -136,6 +160,7 @@ const FormForRegisterWorker = () => {
 
                             </div>
                         </div>
+                        //TODO зробити щоб можна було писати лише в такому форматі dd.mm.yyyy
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="birthday" className="text-sm mr-2   font-light tracking-tight text-gray-500">Дата народження:</label>
                             <input
@@ -159,6 +184,7 @@ const FormForRegisterWorker = () => {
                                 className="border p-2  w-80 rounded-lg"
                             />
                         </div>
+                        //TODO зробити щоб можна було писати лише в такому форматі (+380) 001122333
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="phone" className="text-sm mr-2 font-light tracking-tight text-gray-500">Номер
                                 телефону:</label>
