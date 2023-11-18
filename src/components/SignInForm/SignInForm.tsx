@@ -5,6 +5,7 @@ import hideImg from '../../img/hide.png';
 import axios from 'axios';
 import classes from "./SignInForm.module.css";
 import {InterfaceContext} from "../../context";
+import { Login } from 'queries/api';
 
 interface SignInFormProps {
     handleCloseModal: () => void;
@@ -21,7 +22,7 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {...values, type: "user"});
+                const response = await Login({...values, type: "user"})
                 console.log('response ', response)
                 const receivedToken = response.data;
                 localStorage.setItem('token', JSON.stringify(receivedToken));

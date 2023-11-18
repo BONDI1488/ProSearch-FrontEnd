@@ -11,7 +11,7 @@ function InterfaceContextProviderWrapper({
     const values = useMemo(
         () => ({
             toggleSingupFormDisplay,
-            isSignupFormDisplay
+            isSignupFormDisplay,
         }),
         [isSignupFormDisplay]
     );
