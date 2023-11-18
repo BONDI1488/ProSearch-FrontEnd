@@ -18,11 +18,13 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
     const formik = useFormik({
         initialValues: {
             email: '',
-            password: ''
+            password: '',
+            role: false,
         },
         onSubmit: async (values) => {
             try {
-                const response = await Login({...values, type: "user"})
+                console.log('values ', values)
+                const response = await Login({email: values.email, password: values.password, type: values.role === false ? 'user' : 'worker'})
                 console.log('response ', response)
                 const receivedToken = response.data;
                 localStorage.setItem('token', JSON.stringify(receivedToken));
@@ -73,6 +75,7 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
                         value={formik.values.password}
                         className="border p-2  w-full pr-10 rounded-lg"
                     />
+
                     <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
@@ -85,6 +88,13 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
                         />
                     </button>
                 </div>
+                <input
+                        name="role"
+                        type='checkbox'
+                        onChange={formik.handleChange}
+                        // checked={formik.values.role}
+                        className="border p-2  w-full pr-10 rounded-lg"
+                    />
             </div>
 
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Увійти</button>
