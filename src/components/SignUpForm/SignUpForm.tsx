@@ -22,7 +22,7 @@ const SignUpForm = () => {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration", values);
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/registration`, values);
                 window.location.reload();
             } catch (error) {
                 console.error(error);

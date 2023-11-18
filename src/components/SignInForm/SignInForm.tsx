@@ -21,11 +21,12 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/login", values);
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {...values, type: "user"});
+                console.log('response ', response)
                 const receivedToken = response.data;
                 localStorage.setItem('token', JSON.stringify(receivedToken));
                 console.log(JSON.stringify(response.data, null, 2));
-                window.location.reload();
+                // window.location.reload();
             } catch (error) {
                 console.error(error);
             }
@@ -36,7 +37,6 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
         toggleSingupFormDisplay(!isSignupFormDisplay)
     }
     // винисти цю функцію, бо вона дублюєтся
-
 
     return (
 
