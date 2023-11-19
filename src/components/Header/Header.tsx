@@ -5,6 +5,7 @@ import Login from '../../img/pngwing.com.png';
 import SignUpForm from "../SignUpForm/SignUpForm";
 import SignInForm from "../SignInForm/SignInForm";
 import {InterfaceContext} from "../../context";
+import {Link} from "react-router-dom";
 const Header = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
     const {isSignupFormDisplay} = useContext(InterfaceContext)
@@ -18,8 +19,10 @@ const Header = () => {
         <header className='bg-zinc-200 max-w-full h-72px'>
             <div className='max-w-screen-xl	flex justify-between mx-auto py-2'>
                 <div className='flex items-center	'>
+                    <Link to="/" className='flex items-center'>
                     <img className='w-14 h-14 mr-1' src={Logo} alt=""/>
                     <a  href='#' className='text-2xl font-bold'>ProSearch</a>
+                    </Link>
                 </div>
                 <div className='flex items-center	'>
                     <a className='text-xl' href='#'>Створити замовлення</a>

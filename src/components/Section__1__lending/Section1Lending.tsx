@@ -1,11 +1,14 @@
 import React from 'react';
 import classes from "./Section1Lending.module.css";
 import Search from '../../img/search.png'
+import {Link} from "react-router-dom";
+
+
 
 const Section1Lending = () => {
-    return (
+        return (
         <section className='max-w-full  '>
-            <div className='bg-sky-300	'>
+            <div className='bg-sky-400	'>
                 <div className='max-w-screen-xl relative mx-auto'>
                     <div className='  h-64	'>
                         <p className='text-5xl font-light	 absolute bottom-0 mb-5'>
@@ -15,14 +18,15 @@ const Section1Lending = () => {
                     </div>
                 </div>
             </div>
-            <div className=' bg-yellow-200'>
+            <div className=' bg-yellow-300'>
                 <div className='max-w-screen-xl relative mx-auto'>
                     <div className='h-64 flex'>
                         <div className='mt-5 flex left-0 absolute'>
-                                <input className='py-2 px-4 w-80 h-50px outline-none	rounded-s-lg' placeholder='Спеціаліста' type="text" name="" id=""/>
-                                <button className='bg-gray-200 py-1 px-2 rounded-r-lg text-xl flex justify-center items-center	'>
-                                    <img className='w-7 h-7 mr-1' src={Search} alt=""/>
-                                    Пошук</button>
+                            <Link to='/order-form'>
+                                <button className='bg-gray-100 rounded-lg h-12 w-64 border-solid border-2 border-sky-500'>
+                                    <p className='text-xl'>Створити оголошення</p>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

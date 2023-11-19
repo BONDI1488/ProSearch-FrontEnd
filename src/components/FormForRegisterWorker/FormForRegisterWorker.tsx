@@ -153,29 +153,14 @@ const FormForRegisterWorker = () => {
                             </div>
 
                         </div>
-                        {/*//TODO зробити щоб при відправці перевірялось чи користувач правильно ввів другий пароль*/}
-                        {/*<div className="mb-2 flex justify-between items-center">*/}
-                        {/*    <label htmlFor="password" className="text-sm  mr-2 font-light	tracking-tight text-gray-500">Повторіть*/}
-                        {/*        пароль:</label>*/}
-                        {/*    <div className="">*/}
-                        {/*        <input*/}
-                        {/*            id="password"*/}
-                        {/*            name="password"*/}
-                        {/*            type={showPassword ? "text" : "password"}*/}
-                        {/*            onChange={formik.handleChange}*/}
-                        {/*            value={formik.values.password}*/}
-                        {/*            className="border p-2 w-80 rounded-lg"*/}
-                        {/*        />*/}
 
-                        {/*    </div>*/}
-                        {/*</div>*/}
                         {/*//TODO зробити щоб можна було писати лише в такому форматі dd.mm.yyyy*/}
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="birthday" className="text-sm mr-2   font-light tracking-tight text-gray-500">Дата народження:</label>
                             <input
                                 id="birthday"
                                 name="birthday"
-                                type="birthday"
+                                type="date"
                                 onChange={formik.handleChange}
                                 value={formik.values.birthday}
                                 className="border p-2 w-80 rounded-lg"

@@ -5,6 +5,7 @@ import hideImg from '../../img/hide.png';
 import axios from 'axios';
 import classes from "./SignInForm.module.css";
 import {InterfaceContext} from "../../context";
+import {Main} from "../../pages";
 
 interface SignInFormProps {
     handleCloseModal: () => void;
@@ -26,15 +27,16 @@ const SignInForm: React.FC<SignInFormProps> = ({ handleCloseModal }) => {
                 try {
                     values.type = isChecked ? 'worker' : 'user';
                     console.log(formik.initialValues.type);
-                    const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/login", values);
+                    const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/login",{...values, type: "user"});
                     const receivedToken = response.data;
+                    console.log(response);
                     localStorage.setItem('token', JSON.stringify(receivedToken));
                     console.log(JSON.stringify(response.data, null, 2));
                     window.location.reload();
                 } catch (error) {
                     console.error(error);
                 }
-            },
+            }
         });
 
         const toggleSignUpForm = () => {
