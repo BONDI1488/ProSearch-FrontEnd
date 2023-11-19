@@ -13,7 +13,7 @@ interface SignInFormProps {
 
 const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
     const [showPassword, setShowPassword] = useState(false);
-    const { toggleSingupFormDisplay, isSignupFormDisplay} = useContext(InterfaceContext)
+    const { toggleSingupFormDisplayFun } = useContext(InterfaceContext)
 
     const formik = useFormik({
         initialValues: {
@@ -31,11 +31,6 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
             }
         },
     });
-
-    // винисти цю функцію, бо вона дублюєтся
-    const toggleSignUpForm = () => {
-        toggleSingupFormDisplay(!isSignupFormDisplay)
-    }
 
     return (
 
@@ -94,7 +89,7 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
             </div>
 
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Увійти</button>
-            <button onClick={toggleSignUpForm} className={classes.a}>Зареєструватись</button>
+            <button onClick={toggleSingupFormDisplayFun} className={classes.a}>Зареєструватись</button>
         </form>
 
     );

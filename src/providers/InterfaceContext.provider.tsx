@@ -8,9 +8,13 @@ function InterfaceContextProviderWrapper({
                                          }: InterfaceContextProviderWrapperProps) {
     const [isSignupFormDisplay, toggleSingupFormDisplay] = useState<boolean>(false)
 
+    const toggleSingupFormDisplayFun = () => {
+        toggleSingupFormDisplay(!isSignupFormDisplay)
+    }
+
     const values = useMemo(
         () => ({
-            toggleSingupFormDisplay,
+            toggleSingupFormDisplayFun,
             isSignupFormDisplay,
         }),
         [isSignupFormDisplay]
