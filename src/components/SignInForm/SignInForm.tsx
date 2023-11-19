@@ -23,23 +23,19 @@ const SignInForm: React.FC<SignInFormProps> = ({handleCloseModal}) => {
         },
         onSubmit: async (values) => {
             try {
-                console.log('values ', values)
                 const response = await Login({email: values.email, password: values.password, type: values.role === false ? 'user' : 'worker'})
-                console.log('response ', response)
                 const receivedToken = response.data;
                 localStorage.setItem('token', JSON.stringify(receivedToken));
-                console.log(JSON.stringify(response.data, null, 2));
-                // window.location.reload();
             } catch (error) {
                 console.error(error);
             }
         },
     });
 
+    // винисти цю функцію, бо вона дублюєтся
     const toggleSignUpForm = () => {
         toggleSingupFormDisplay(!isSignupFormDisplay)
     }
-    // винисти цю функцію, бо вона дублюєтся
 
     return (
 
