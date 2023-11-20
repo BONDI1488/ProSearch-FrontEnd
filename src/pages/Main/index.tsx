@@ -10,6 +10,7 @@ import SignInForm from "../../components/SignInForm/SignInForm";
 import HeaderAuthedUser from "../../components/HeaderAuthedUser/HeaderAuthedUser";
 import classes from "./index.module.css";
 import PublishedSuccessfully from "../../components/PublishedSuccessfully/PublishedSuccessfully";
+import MenuForProfile from "../../components/MenuForProfile/MenuForProfile";
 
 export const Main = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
@@ -33,7 +34,7 @@ export const Main = () => {
             ) : (
                 <Header />
             )}
-            <PublishedSuccessfully/>
+            <MenuForProfile/>
             <Section1Lending/>
             <Section2Lending/>
             <Section3Lending/>
