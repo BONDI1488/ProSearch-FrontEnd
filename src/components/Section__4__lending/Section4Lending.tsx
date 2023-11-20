@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Section4Lending.module.scss";
 import Star5 from "./DopComponent/Star5";
 import Arrow from '../../img/arrow.png'
 import Coment from "./DopComponent/Coment";
