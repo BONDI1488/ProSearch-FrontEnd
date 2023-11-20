@@ -11,8 +11,8 @@ interface ComentProps {
 
 const Coment: React.FC<ComentProps> = ({name, photo, text, namePeople}) => {
     return (
-        <div className=' bg-gray-200 h-64 w-96 rounded-xl shadow-xl'>
-            <div className='flex items-center m-4'>
+        <div className=' bg-gray-200 h-64 w-[400px] rounded-xl'>
+            <div className='flex items-center p-4'>
                 <div className="w-20 h-20 rounded-full overflow-hidden">
                     <img
                         className="w-20 h-20 object-cover"
@@ -26,8 +26,8 @@ const Coment: React.FC<ComentProps> = ({name, photo, text, namePeople}) => {
                 </div>
             </div>
             <div className='bg-gray-300 h-32 w-11/12 mx-auto rounded-lg relative'>
-                <p className='m-3 text-lg text-gray-600	'>{text}</p>
-                <p className='absolute bottom-0 right-0 m-3 text-gray-700 text-sm'>{namePeople}</p>
+                <p className='p-3 text-lg text-gray-600	'>{text}</p>
+                <p className='absolute bottom-0 right-0 p-3 text-gray-700 text-sm'>{namePeople}</p>
             </div>
         </div>
     );

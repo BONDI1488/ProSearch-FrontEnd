@@ -1,0 +1,48 @@
+.slick-next {
+  position: absolute !important;
+  top: -46px !important;
+  right: 0 !important;
+  width: 48px;
+  height: 48px;
+  background-color: rgb(253, 230, 138, 1);
+  border-radius: 50%;
+  &::before {
+    position: absolute;
+    width: 24px !important;
+    height: 24px !important;
+    background: url("../../public/icons/arrow.png") no-repeat center;
+    background-size: cover;
+    top: 12px;
+    left: 16px;
+    content: "";
+  }
+}
+
+.slick-prev {
+  position: absolute !important;
+  top: -70px !important;
+  left: 1160px !important;
+  width: 48px;
+  height: 48px;
+  background-color: rgb(253, 230, 138, 1);
+  border-radius: 50%;
+  transform: rotate(360deg);
+  &::before {
+    position: absolute;
+    width: 24px !important;
+    height: 24px !important;
+    background: url("../../public/icons/arrow.png") no-repeat center;
+    transform: rotate(180deg);
+    background-size: cover;
+    top: 12px;
+    left: 11px;
+    content: "";
+  }
+}
+
+.slick-next:focus,
+.slick-next:hover,
+.slick-prev:focus,
+.slick-prev:hover {
+  background: rgb(253, 230, 138);
+}
