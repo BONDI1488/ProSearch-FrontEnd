@@ -1,12 +1,13 @@
-import React, { useState }  from 'react';
+import React, { useContext, useState }  from 'react';
 import { useFormik } from 'formik';
 import showImg from '../../img/show.png';
 import hideImg from '../../img/hide.png';
 import classes from "./SignUpForm.module.css";
 import axios from 'axios';
+import { InterfaceContext } from 'context';
 
 const SignUpForm = () => {
-
+    const { toggleSingupFormDisplayFun } = useContext(InterfaceContext)
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -22,7 +23,7 @@ const SignUpForm = () => {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration", values);
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/registration`, values);
                 window.location.reload();
             } catch (error) {
                 console.error(error);
@@ -114,7 +115,7 @@ const SignUpForm = () => {
             </div>
 
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Зареєструватися</button>
-            <a href="#" className={classes.a}>Я вже зареєстрований</a>
+            <button onClick={toggleSingupFormDisplayFun} className={classes.a}>Я вже зареєстрований</button>
         </form>
 
     );

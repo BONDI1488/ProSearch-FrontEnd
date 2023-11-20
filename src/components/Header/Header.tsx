@@ -14,7 +14,6 @@ const Header = () => {
         setShowSignInModal(true);
     };
 
-    console.log('isSignupFormDisplay ', isSignupFormDisplay)
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
             <div className='max-w-screen-xl	flex justify-between mx-auto py-2'>
