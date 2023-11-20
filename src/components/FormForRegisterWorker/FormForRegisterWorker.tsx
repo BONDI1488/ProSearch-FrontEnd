@@ -48,17 +48,26 @@ const FormForRegisterWorker = () => {
         },
         onSubmit: async (values) => {
             try {
-                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration", values);
-                window.location.reload();
+                const response = await axios.post("https://prosearch-backend-01ffaf2c2114.herokuapp.com/auth/registration-worker", values, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const receivedToken = response.data;
+                console.log(response)
+                console.log(receivedToken);
+
+                alert(String(receivedToken));
+                // window.location.reload();
             } catch (error) {
-                console.error(error);
+                console.error('Error:',error);
             }
         },
     });
 
     return (
-        <form action="" className='pb-9'>
-//TODO подивитись чи норм фотка відправляється
+        <form onSubmit={formik.handleSubmit} action="" className='pb-9'>
+{/*//TODO подивитись чи норм фотка відправляється*/}
             <div className='max-w-screen-lg mx-auto'>
                 <p className='text-center text-4xl my-12'>Реєстрація Фахівця</p>
                 <img
@@ -144,29 +153,14 @@ const FormForRegisterWorker = () => {
                             </div>
 
                         </div>
-                        //TODO зробити щоб при відправці перевірялось чи користувач правильно ввів другий пароль
-                        <div className="mb-2 flex justify-between items-center">
-                            <label htmlFor="password" className="text-sm  mr-2 font-light	tracking-tight text-gray-500">Повторіть
-                                пароль:</label>
-                            <div className="">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type={showPassword ? "text" : "password"}
-                                    onChange={formik.handleChange}
-                                    value={formik.values.password}
-                                    className="border p-2 w-80 rounded-lg"
-                                />
 
-                            </div>
-                        </div>
-                        //TODO зробити щоб можна було писати лише в такому форматі dd.mm.yyyy
+                        {/*//TODO зробити щоб можна було писати лише в такому форматі dd.mm.yyyy*/}
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="birthday" className="text-sm mr-2   font-light tracking-tight text-gray-500">Дата народження:</label>
                             <input
                                 id="birthday"
                                 name="birthday"
-                                type="birthday"
+                                type="date"
                                 onChange={formik.handleChange}
                                 value={formik.values.birthday}
                                 className="border p-2 w-80 rounded-lg"
@@ -184,7 +178,7 @@ const FormForRegisterWorker = () => {
                                 className="border p-2  w-80 rounded-lg"
                             />
                         </div>
-                        //TODO зробити щоб можна було писати лише в такому форматі (+380) 001122333
+                        {/*//TODO зробити щоб можна було писати лише в такому форматі (+380) 001122333*/}
                         <div className="mb-2 flex justify-between items-center">
                             <label htmlFor="phone" className="text-sm mr-2 font-light tracking-tight text-gray-500">Номер
                                 телефону:</label>
@@ -209,7 +203,7 @@ const FormForRegisterWorker = () => {
                                     name="gender"
                                     value="male"
                                     checked={formik.values.gender === "male"}
-                                    onChange={formik.handleChange}
+                                    onChange={() => formik.setFieldValue("gender", "male")}
                                     className="mr-2"
                                 />
                                 <label htmlFor="male" className="mr-4">Чоловік</label>
@@ -220,10 +214,11 @@ const FormForRegisterWorker = () => {
                                     name="gender"
                                     value="female"
                                     checked={formik.values.gender === "female"}
-                                    onChange={formik.handleChange}
+                                    onChange={() => formik.setFieldValue("gender", "female")}
                                     className="mr-2"
                                 />
                                 <label htmlFor="female">Жінка</label>
+
                             </div>
                         </div>
 
@@ -255,7 +250,7 @@ const FormForRegisterWorker = () => {
 
                         <div className=" mt-8 text-center">
                             <button type="submit" className="bg-amber-200 px-8 py-3 rounded text-2xl border border-black">
-                                Надіслати анкету
+                                Зареєструватись
                             </button>
                         </div>
 

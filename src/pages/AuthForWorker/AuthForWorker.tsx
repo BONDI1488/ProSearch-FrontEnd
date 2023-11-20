@@ -11,7 +11,7 @@ const AuthForWorker = () => {
         <div className='max-w-full'>
             <Header />
             <FormForRegisterWorker />
-            <div className='absolute bottom-0 w-full'>
+            <div className='absolute -bottom-1 w-full'>
             <Footer/>
             </div>
         </div>

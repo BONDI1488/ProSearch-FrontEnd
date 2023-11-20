@@ -2,7 +2,7 @@ import React from 'react';
 import classes from "./Section2Lending.module.css";
 import Wrench from '../../img/wrench.png'
 import House from '../../img/house.png'
-import Plug from '../../img/plug.png'
+import Brick from '../../img/brick.png'
 
 const Section2Lending = () => {
     return (
@@ -43,18 +43,18 @@ const Section2Lending = () => {
                         </ul>
                     </div>
                 </div><div className='flex '>
-                    <img className='w-16 h-16' src={Plug} alt=""/>
+                    <img className='w-16 h-16' src={Brick} alt=""/>
                     <div className='mt-4 ml-2'>
-                        <p className='text-3xl mb-4'>Ремонт техніки</p>
+                        <p className='text-3xl mb-4'>Будівельні роботи</p>
                         <ul>
                             <li className=' text-lg'>
-                                <a className={classes.link} href='#'>Ремонт цифрової техніки</a>
+                                <a className={classes.link} href='#'>Різноробочі</a>
                             </li>
                             <li className=' text-lg'>
-                                <a className={classes.link} href='#'>Ремонт мобільних телефонів</a>
+                                <a className={classes.link} href='#'>Бетонні роботи</a>
                             </li>
                             <li className=' text-lg'>
-                                <a className={classes.link} href='#'>Ремонт побутової техніки</a>
+                                <a className={classes.link} href='#'>Бурові роботи</a>
                             </li>
                         </ul>
                     </div>
