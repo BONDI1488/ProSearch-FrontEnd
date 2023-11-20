@@ -1,6 +1,4 @@
 import React from 'react';
-import Star5 from "./DopComponent/Star5";
-import Arrow from '../../img/arrow.png'
 import Coment from "./DopComponent/Coment";
 import Face1 from './DopComponent/img_peopleForComments/sex.jpg'
 import Face2 from './DopComponent/img_peopleForComments/skin-tone.jpg'
