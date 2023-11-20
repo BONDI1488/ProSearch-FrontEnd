@@ -4,7 +4,6 @@ import Face1 from './DopComponent/img_peopleForComments/sex.jpg'
 import Face2 from './DopComponent/img_peopleForComments/skin-tone.jpg'
 import Face3 from './DopComponent/img_peopleForComments/images.jpeg'
 import Face4 from './DopComponent/img_peopleForComments/images (1).jpeg'
-import Face5 from './DopComponent/img_peopleForComments/indsbidh39la1.jpg'
 import Slider from "react-slick";
 
 const Section4Lending = () => {
