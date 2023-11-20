@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./Section4Lending.module.css";
+import "./Section4Lending.module.scss";
 import Star5 from "./DopComponent/Star5";
 import Arrow from '../../img/arrow.png'
 import Coment from "./DopComponent/Coment";
@@ -8,23 +8,29 @@ import Face2 from './DopComponent/img_peopleForComments/skin-tone.jpg'
 import Face3 from './DopComponent/img_peopleForComments/images.jpeg'
 import Face4 from './DopComponent/img_peopleForComments/images (1).jpeg'
 import Face5 from './DopComponent/img_peopleForComments/indsbidh39la1.jpg'
+import Slider from "react-slick";
+
 const Section4Lending = () => {
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        speed: 1500,
+        autoplaySpeed: 3500,
+        cssEase: "linear"
+    };
+
     return (
         <section className='max-w-full'>
             <div className='max-w-screen-xl mx-auto'>
-                <div className='flex justify-between	'>
+                <div className='flex justify-between relative'>
                     <p className='my-7 text-3xl'>Останні відгуки</p>
-                    <div className="flex justify-center items-center space-x-4">
-                        <button className="w-12 h-12 rounded-full bg-amber-200	 flex justify-center items-center">
-                            <img src={Arrow} alt="right arrow" className="w-6 h-6 transform rotate-180" />
-                        </button>
-                        <button className="w-12 h-12 rounded-full bg-amber-200	 flex justify-center items-center">
-                            <img src={Arrow} alt="left arrow" className="w-6 h-6" />
-                        </button>
-                    </div>
                 </div>
-            {/*--------------------*/}
-                <div className='flex justify-between mt-5'>
+
+                <Slider {...settings}>
                     <Coment
                         name='Мурат Максим Олегович'
                         photo={Face1}
@@ -43,8 +49,25 @@ const Section4Lending = () => {
                         text="Ставив мені проводку, зробив все гарно, після себе прибрав"
                         namePeople='Артем С.'
                     />
-
-                </div>
+                    <Coment
+                        name='Венгер Анатолій Іванович'
+                        photo={Face4}
+                        text="Поремонтував кран за декілька хвилин, мій герой"
+                        namePeople='Олексій М.'
+                    />
+                    <Coment
+                        name='Швець Владислав Вікторович'
+                        photo={Face3}
+                        text="Ставив мені проводку, зробив все гарно, після себе прибрав"
+                        namePeople='Артем С.'
+                    />
+                    <Coment
+                        name='Мурат Максим Олегович'
+                        photo={Face1}
+                        text="Майстер просто клас XD"
+                        namePeople='Олександр Б.'
+                    />
+                </Slider>
             </div>
 
         </section>
