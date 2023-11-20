@@ -27,6 +27,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ handleCloseModal }) => {
                 const response = await Login({email: values.email, password: values.password, type: values.role === false ? 'user' : 'worker'})
                 const receivedToken = response.data;
                 localStorage.setItem('token', JSON.stringify(receivedToken));
+                window.location.reload();
             } catch (error) {
                 console.error(error);
             }
@@ -86,14 +87,14 @@ const SignInForm: React.FC<SignInFormProps> = ({ handleCloseModal }) => {
             <button type="submit" className="bg-amber-200 rounded-lg p-2 mx-12 my-5">Увійти</button>
             <button onClick={toggleSingupFormDisplayFun} className={classes.a}>Зареєструватись</button>
 
-            <div>
+            <div className='flex items-center content-center mt-3'>
+                <label htmlFor="confirmationCheckbox">Worker?</label>
                 <input
                     name="role"
                     type="checkbox"
                     onChange={formik.handleChange}
-                    className="border p-2  w-full pr-10 rounded-lg"
+                    className="border p-2 ml-5 rounded-lg"
                 />
-                <label htmlFor="confirmationCheckbox">Worker?</label>
             </div>
         </form>
 
