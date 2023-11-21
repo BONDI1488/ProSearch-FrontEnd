@@ -8,13 +8,16 @@ type UserContextProviderWrapperProps = { children: ReactNode }
 function UserContextProviderWrapper({children
 }: UserContextProviderWrapperProps) {
     const [authToken, setAuthToken] = useState<boolean>(false)
+    const [userRole, setUserRole] = useState('')
 
     const values = useMemo(
         () => ({
             setAuthToken,
             authToken,
+            setUserRole,
+            userRole
         }),
-        [authToken]
+        [authToken, userRole]
     );
 
     useEffect(() => {
