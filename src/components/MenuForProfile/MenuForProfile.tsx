@@ -1,10 +1,11 @@
 import React, {ChangeEvent, useContext, useState} from 'react';
 import classes from "./MenuForProfile.module.css";
 import User from "../../img/pngwing.com.png"
-import {InterfaceContext} from "../../context";
+import {InterfaceContext, UserContext} from "../../context";
 
 const MenuForProfile = () => {
-    const { toggleDisplayProfileModalFun } = useContext(InterfaceContext)
+    const { toggleDisplayProfileModalFun, toggleDisplayHeaderModalFun } = useContext(InterfaceContext)
+    const { setAuthToken } = useContext(UserContext)
     const [userPhoto, setUserPhoto] = useState(User);
 
     const changePhoto = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,9 +33,10 @@ const MenuForProfile = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        window.location.reload();
-
+        setAuthToken('');
+        toggleDisplayProfileModalFun()
     };
+
     return (
         <div className={`w-[270px] h-[450px] bg-gray-100 rounded-md drop-shadow-lg absolute top-[80px] right-[30px] z-50`}>
             <div className={`py-2 px-4`}>

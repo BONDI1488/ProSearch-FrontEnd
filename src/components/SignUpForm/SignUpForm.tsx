@@ -24,7 +24,7 @@ const SignUpForm = () => {
         onSubmit: async (values) => {
             try {
                 const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/registration`, values);
-                window.location.reload();
+                toggleDisplayHeaderModalFun()
             } catch (error) {
                 console.error(error);
             }
@@ -33,7 +33,7 @@ const SignUpForm = () => {
 
     return (
 
-        <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg'>
+        <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 top-[80px] right-20 drop-shadow-lg'>
            <div className='flex'>
             <p className="text-3xl font-bold tracking-tight	mb-5">Реєстрація</p>
                <button  onClick={toggleDisplayHeaderModalFun} className={classes.closeButton}>

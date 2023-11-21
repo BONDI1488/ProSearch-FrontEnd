@@ -2,16 +2,14 @@ import React, {useState, useEffect, useContext} from 'react';
 import {useFormik} from 'formik';
 import showImg from '../../img/show.png';
 import hideImg from '../../img/hide.png';
-import axios from 'axios';
 import classes from "./SignInForm.module.css";
-import {InterfaceContext} from "../../context";
-import {Main} from "../../pages";
+import {InterfaceContext, UserContext} from "../../context";
 import { Login } from 'queries/api';
 
 const SignInForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
-    // const { toggleDisplayProfileModalFun, toggle, isDisplayProfileModal, isDisplayHeaderModal, isSignupFormDisplay } = useContext(InterfaceContext);
-    const { toggleSingupFormDisplayFun, toggleDisplayProfileModalFun } = useContext(InterfaceContext)
+    const { toggleSingupFormDisplayFun, toggleDisplayProfileModalFun, toggleDisplayHeaderModalFun } = useContext(InterfaceContext)
+    const { setAuthToken } = useContext(UserContext)
 
     const formik = useFormik({
         initialValues: {
@@ -22,9 +20,10 @@ const SignInForm: React.FC = () => {
         onSubmit: async (values) => {
             try {
                 const response = await Login({email: values.email, password: values.password, type: values.role === false ? 'user' : 'worker'})
-                const receivedToken = response.data;
+                const receivedToken = response.data.token;
                 localStorage.setItem('token', JSON.stringify(receivedToken));
-                window.location.reload();
+                setAuthToken(response.data.token)
+                toggleDisplayHeaderModalFun()
             } catch (error) {
                 console.error(error);
             }
@@ -34,7 +33,7 @@ const SignInForm: React.FC = () => {
         return (
 
             <form onSubmit={formik.handleSubmit}
-                  className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg'>
+                  className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 top-[80px] right-20 drop-shadow-lg'>
                 <div className='flex'>
                     <p className="text-3xl font-bold tracking-tight	mb-5">Вхід</p>
                     <button onClick={toggleDisplayProfileModalFun} className={classes.closeButton}>

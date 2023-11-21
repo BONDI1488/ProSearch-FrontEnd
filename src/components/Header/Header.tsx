@@ -3,16 +3,16 @@ import Logo from '../../img/logo12123.png';
 import Login from '../../img/pngwing.com.png';
 import SignUpForm from "../SignUpForm/SignUpForm";
 import SignInForm from "../SignInForm/SignInForm";
-import {InterfaceContext} from "../../context";
+import {InterfaceContext, UserContext} from "../../context";
 import {Link} from "react-router-dom";
 import MenuForProfile from "../MenuForProfile/MenuForProfile";
 import Bag from "../../img/bag.png";
 import User from "../../img/pngwing.com.png";
 const Header = () => {
     const { toggleDisplayProfileModalFun, toggleDisplayHeaderModalFun, isDisplayProfileModal, isDisplayHeaderModal, isSignupFormDisplay } = useContext(InterfaceContext);
-    const [isHeaderModal, toggleHeaderModal] = useState(false);
+    const { authToken } = useContext(UserContext)
 
-    const token = localStorage.getItem('token');
+    console.log('authToken', authToken)
 
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
@@ -30,7 +30,7 @@ const Header = () => {
                     <input className='py-1 px-2 w-350px h-50px outline-none	rounded-s-lg' placeholder='Що потрібно зробити ?' type="text" name="" id=""/>
                     <button className='bg-amber-100	py-1 px-2 rounded-r-lg'>Знайти фахівця</button>
                 </div>
-                {token ?
+                {!authToken ?
                     <div className='flex items-center'>
                         <img className='w-12 h-12 mr-1' src={Login} alt=""/>
                         <a className='text-lg' href='#' onClick={toggleDisplayHeaderModalFun}>Вхід та реєстрація</a>
