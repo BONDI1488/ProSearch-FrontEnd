@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import HeaderAuthedUser from "../../components/HeaderAuthedUser/HeaderAuthedUser";
 import classes from "./index.module.css";
+import EditProfile from "../../components/EditProfile/EditProfile";
 
 export const Main = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
@@ -32,6 +33,7 @@ export const Main = () => {
             ) : (
                 <Header />
             )}
+            {/*<EditProfile/>*/}
             <Section1Lending/>
             <Section2Lending/>
             <Section3Lending/>
