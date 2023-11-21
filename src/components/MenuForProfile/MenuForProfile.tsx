@@ -38,7 +38,7 @@ const MenuForProfile = () => {
     };
 
     return (
-        <div className={`w-[270px] h-[450px] bg-gray-100 rounded-md drop-shadow-lg absolute top-[80px] right-[30px] z-50`}>
+        <div className={`w-[270px] h-[450px] bg-gray-100 rounded-md drop-shadow-lg absolute top-[80px] right-[-10px] z-50`}>
             <div className={`py-2 px-4`}>
                 <p className='text-center py-4 text-lg'>Замовник</p>
                 <button className={classes.closeButton} onClick={toggleDisplayProfileModalFun}>

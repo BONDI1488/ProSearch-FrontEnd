@@ -30,42 +30,45 @@ const Header = () => {
                     <input className='py-1 px-2 w-350px h-50px outline-none	rounded-s-lg' placeholder='Що потрібно зробити ?' type="text" name="" id=""/>
                     <button className='bg-amber-100	py-1 px-2 rounded-r-lg'>Знайти фахівця</button>
                 </div>
-                {!authToken ?
-                    <div className='flex items-center'>
-                        <img className='w-12 h-12 mr-1' src={Login} alt=""/>
-                        <a className='text-lg' href='#' onClick={toggleDisplayHeaderModalFun}>Вхід та реєстрація</a>
-                    </div>
-                    : <div className='flex justify-between'>
-                        <div className='flex items-center mr-4'>
-                            <button>
-                                <img src={Bag} alt=""/>
-                            </button>
+                <div className='relative'>
+                    {!authToken ?
+                        <div className='flex items-center'>
+                            <img className='w-12 h-12 mr-1' src={Login} alt=""/>
+                            <a className='text-lg' href='#' onClick={toggleDisplayHeaderModalFun}>Вхід та реєстрація</a>
                         </div>
-                        <div className='flex items-center cursor-pointer px-4' onClick={toggleDisplayProfileModalFun}>
-                            <img
-                                src={User}
-                                alt=""
-                                className='w-12 h-12 cursor-pointer rounded-full'
-                            />
-                            <div className='pl-4'>
-                                <p className='text-lg'>Профіль</p>
-                                <p className='text-sm text-gray-500'>Замовника</p>
+                        : <div className='flex justify-between'>
+                            <div className='flex items-center mr-4'>
+                                <button>
+                                    <img src={Bag} alt=""/>
+                                </button>
                             </div>
+
+                                <div className='flex items-center cursor-pointer px-4' onClick={toggleDisplayProfileModalFun}>
+                                    <img
+                                        src={User}
+                                        alt=""
+                                        className='w-12 h-12 cursor-pointer rounded-full'
+                                    />
+                                    <div className='pl-4'>
+                                        <p className='text-lg'>Профіль</p>
+                                        <p className='text-sm text-gray-500'>Замовника</p>
+                                    </div>
+                                </div>
                         </div>
-                    </div>
-                }
-            </div>
-            {isDisplayHeaderModal &&
-                <>
-                    {!isSignupFormDisplay ?
-                            <SignInForm />
-                        : <SignUpForm/>
                     }
-                </>
-            }
-            {
-                isDisplayProfileModal && <MenuForProfile/>
-            }
+                    {isDisplayHeaderModal &&
+                        <>
+                            {!isSignupFormDisplay ?
+                                <SignInForm />
+                                : <SignUpForm/>
+                            }
+                        </>
+                    }
+                    {
+                        isDisplayProfileModal && <MenuForProfile/>
+                    }
+                </div>
+            </div>
         </header>
     );
 };
