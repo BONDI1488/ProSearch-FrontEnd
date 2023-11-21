@@ -9,12 +9,8 @@ import MenuForProfile from "../MenuForProfile/MenuForProfile";
 import Bag from "../../img/bag.png";
 import User from "../../img/pngwing.com.png";
 const Header = () => {
-    const { toggleDisplayProfileModalFun, isDisplayProfileModal, isSignupFormDisplay } = useContext(InterfaceContext);
+    const { toggleDisplayProfileModalFun, toggleDisplayHeaderModalFun, isDisplayProfileModal, isDisplayHeaderModal, isSignupFormDisplay } = useContext(InterfaceContext);
     const [isHeaderModal, toggleHeaderModal] = useState(false);
-
-    const toggleHeaderModalFun = () => {
-        toggleHeaderModal(!isHeaderModal);
-    };
 
     const token = localStorage.getItem('token');
 
@@ -37,7 +33,7 @@ const Header = () => {
                 {token ?
                     <div className='flex items-center'>
                         <img className='w-12 h-12 mr-1' src={Login} alt=""/>
-                        <a className='text-lg' href='#' onClick={toggleHeaderModalFun}>Вхід та реєстрація</a>
+                        <a className='text-lg' href='#' onClick={toggleDisplayHeaderModalFun}>Вхід та реєстрація</a>
                     </div>
                     : <div className='flex justify-between'>
                         <div className='flex items-center mr-4'>
@@ -59,10 +55,13 @@ const Header = () => {
                     </div>
                 }
             </div>
-            {isHeaderModal &&
-                !isSignupFormDisplay ?
-                    <SignInForm handleCloseModal={toggleHeaderModalFun} />
-                : <SignUpForm/>
+            {isDisplayHeaderModal &&
+                <>
+                    {!isSignupFormDisplay ?
+                            <SignInForm />
+                        : <SignUpForm/>
+                    }
+                </>
             }
             {
                 isDisplayProfileModal && <MenuForProfile/>

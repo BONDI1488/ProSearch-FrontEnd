@@ -8,13 +8,10 @@ import {InterfaceContext} from "../../context";
 import {Main} from "../../pages";
 import { Login } from 'queries/api';
 
-interface SignInFormProps {
-    handleCloseModal: () => void;
-}
-
-const SignInForm: React.FC<SignInFormProps> = ({ handleCloseModal }) => {
+const SignInForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { toggleSingupFormDisplayFun } = useContext(InterfaceContext)
+    // const { toggleDisplayProfileModalFun, toggle, isDisplayProfileModal, isDisplayHeaderModal, isSignupFormDisplay } = useContext(InterfaceContext);
+    const { toggleSingupFormDisplayFun, toggleDisplayProfileModalFun } = useContext(InterfaceContext)
 
     const formik = useFormik({
         initialValues: {
@@ -40,7 +37,7 @@ const SignInForm: React.FC<SignInFormProps> = ({ handleCloseModal }) => {
                   className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg'>
                 <div className='flex'>
                     <p className="text-3xl font-bold tracking-tight	mb-5">Вхід</p>
-                    <button onClick={handleCloseModal} className={classes.closeButton}>
+                    <button onClick={toggleDisplayProfileModalFun} className={classes.closeButton}>
                         &times;
                     </button>
                 </div>

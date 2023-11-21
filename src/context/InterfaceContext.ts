@@ -5,6 +5,8 @@ const interfaceContextDefaults: any = {
     isSignupFormDisplay: false,
     toggleDisplayProfileModalFun: () => null,
     isDisplayProfileModal: false,
+    toggleDisplayHeaderModalFun: () => null,
+    isDisplayHeaderModal: false,
 }
 
 export const InterfaceContext = createContext<any>(interfaceContextDefaults)
