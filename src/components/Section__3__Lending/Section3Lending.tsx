@@ -118,11 +118,11 @@ const Section3Lending: React.FC = () => {
                 formik.setFieldValue('searchQuery', '');
                 setSuggestions(response?.data || []);
 
-                if (response.data.length === 0) {
-                    formik.setStatus('Нічого не знайдено');
-                } else {
-                    formik.setStatus(null);
-                }
+                // if (response.data.length === 0) {
+                //     formik.setStatus('Нічого не знайдено');
+                // } else {
+                //     formik.setStatus(null);
+                // }
             } catch (error) {
                 console.error('Error fetching data:', error);
 
@@ -147,28 +147,32 @@ const Section3Lending: React.FC = () => {
                 <p className='text-3xl font-light pt-14'>
                     Не знайшли потрібну послугу? Використовуйте пошук!
                 </p>
-                <form onSubmit={formik.handleSubmit}>
-                    <div className='pt-16 flex justify-center relative'>
-                        <input
-                            className='py-1 px-2 w-96 h-10 outline-none rounded-s-lg'
-                            placeholder='Яку роботу потрібно зробити?'
-                            type='text'
-                            name='searchQuery'
-                            value={formik.values.searchQuery}
-                            onChange={(e) => {
-                                formik.handleChange(e);
-                                formik.setFieldTouched('searchQuery', true, false);
-                                setSuggestions([]);
-                            }}
-                        />
-                        <button
-                            className='bg-amber-100 h-10 py-1 px-2 rounded-r-lg'
-                            type='submit'
-                        >
-                            <img className='h-8 w-8' src={Search} alt='' />
-                        </button>
+                <div className="pt-16 flex justify-center">
+                    <div className='relative'>
+                        <form onSubmit={formik.handleSubmit}>
+                            <div className="flex justify-center">
+                                <input
+                                    className='py-1 px-2 w-96 h-10 outline-none rounded-s-lg'
+                                    placeholder='Яку роботу потрібно зробити?'
+                                    type='text'
+                                    name='searchQuery'
+                                    value={formik.values.searchQuery}
+                                    onChange={(e) => {
+                                        formik.handleChange(e);
+                                        formik.setFieldTouched('searchQuery', true, false);
+                                        setSuggestions([]);
+                                    }}
+                                />
+                                <button
+                                    className='bg-amber-100 h-10 py-1 px-2 rounded-r-lg'
+                                    type='submit'
+                                >
+                                    <img className='h-8 w-8' src={Search} alt='' />
+                                </button>
+                            </div>
+                        </form>
                         {isDisply &&
-                        <div className='absolute top-[104px] left-0 bg-gray-100 z-10 border border-gray-300 rounded-lg w-96'>
+                        <div className='absolute top-[45px] left-0 bg-gray-100 z-10 border border-gray-300 rounded-lg w-[100%]'>
                         {(suggestions.length > 0 && suggestions.length !== 0) ? (
                             <ul >
                                 {suggestions.map((suggestion) => (
@@ -184,8 +188,7 @@ const Section3Lending: React.FC = () => {
                         ):   <p>Нема такого працівника</p> }
                         </div>}
                     </div>
-                </form>
-                {formik.status && <p className='text-red-500'>{formik.status}</p>}
+                </div>
             </div>
         </section>
     );
