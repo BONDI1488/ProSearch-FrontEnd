@@ -7,7 +7,7 @@ import axios from 'axios';
 import { InterfaceContext } from 'context';
 
 const SignUpForm = () => {
-    const { toggleSingupFormDisplayFun } = useContext(InterfaceContext)
+    const { toggleDisplayHeaderModalFun, toggleSingupFormDisplayFun } = useContext(InterfaceContext)
     const [showPassword, setShowPassword] = useState(false);
 
     const formik = useFormik({
@@ -36,7 +36,7 @@ const SignUpForm = () => {
         <form onSubmit={formik.handleSubmit} className='flex flex-col max-w-sm	 mx-auto w-370 h-547 bg-gray-100 rounded-xl p-6 absolute z-10 right-20 drop-shadow-lg'>
            <div className='flex'>
             <p className="text-3xl font-bold tracking-tight	mb-5">Реєстрація</p>
-               <button  onClick={toggleSingupFormDisplayFun} className={classes.closeButton}>
+               <button  onClick={toggleDisplayHeaderModalFun} className={classes.closeButton}>
                    &times;
                </button>
            </div>

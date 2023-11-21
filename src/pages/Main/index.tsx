@@ -7,7 +7,6 @@ import Section4Lending from "../../components/Section__4__lending/Section4Lendin
 import Section5Lending from "../../components/Section__5__lending/Section5Lending";
 import Footer from "../../components/Footer/Footer";
 import SignInForm from "../../components/SignInForm/SignInForm";
-import HeaderAuthedUser from "../../components/HeaderAuthedUser/HeaderAuthedUser";
 import classes from "./index.module.css";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import PublishedSuccessfully from "../../components/PublishedSuccessfully/PublishedSuccessfully";
@@ -23,15 +22,9 @@ export const Main = () => {
         setShowSignInModal(false);
     };
 
-    const token = localStorage.getItem('token');
-
     return (
         <div>
-            {token ? (
-                <HeaderAuthedUser />
-            ) : (
-                <Header />
-            )}
+            <Header />
             {/*<EditProfile/>*/}
             <Section1Lending/>
             <Section2Lending/>
@@ -39,13 +32,6 @@ export const Main = () => {
             <Section4Lending/>
             <Section5Lending/>
             <Footer/>
-            {showSignInModal && (
-                <div className={classes.modalOverlay}>
-                    <div className={classes.modal}>
-                        <SignInForm handleCloseModal={handleCloseModal} />
-                    </div>
-                </div>
-            )}
         </div>
     )
 }

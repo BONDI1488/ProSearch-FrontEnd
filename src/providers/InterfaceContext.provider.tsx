@@ -9,6 +9,7 @@ function InterfaceContextProviderWrapper({
                                          }: InterfaceContextProviderWrapperProps) {
     const [isSignupFormDisplay, toggleSingupFormDisplay] = useState<boolean>(false)
     const [isDisplayProfileModal, toggleIsDisplayProfileModal] = useState<boolean>(false)
+    const [isDisplayHeaderModal, toggleDisplayHeaderModal] = useState<boolean>(false)
 
     const toggleSingupFormDisplayFun = () => {
         toggleSingupFormDisplay(!isSignupFormDisplay)
@@ -18,14 +19,21 @@ function InterfaceContextProviderWrapper({
         toggleIsDisplayProfileModal(!isDisplayProfileModal)
     }
 
+    const toggleDisplayHeaderModalFun = () => {
+        console.log('isDisplayHeaderModal ', isDisplayHeaderModal)
+        toggleDisplayHeaderModal(!isDisplayHeaderModal)
+    }
+
     const values = useMemo(
         () => ({
             toggleSingupFormDisplayFun,
             isSignupFormDisplay,
             toggleDisplayProfileModalFun,
             isDisplayProfileModal,
+            toggleDisplayHeaderModalFun,
+            isDisplayHeaderModal
         }),
-        [isSignupFormDisplay, isDisplayProfileModal]
+        [isSignupFormDisplay, isDisplayProfileModal, isDisplayHeaderModal]
     );
 
     return (
