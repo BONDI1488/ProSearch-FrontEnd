@@ -20,7 +20,6 @@ function InterfaceContextProviderWrapper({
     }
 
     const toggleDisplayHeaderModalFun = () => {
-        console.log('isDisplayHeaderModal ', isDisplayHeaderModal)
         toggleDisplayHeaderModal(!isDisplayHeaderModal)
     }
 
