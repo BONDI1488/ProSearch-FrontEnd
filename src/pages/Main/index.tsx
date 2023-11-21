@@ -23,8 +23,6 @@ export const Main = () => {
         setShowSignInModal(false);
     };
 
-
-
     const token = localStorage.getItem('token');
 
     return (
@@ -34,7 +32,6 @@ export const Main = () => {
             ) : (
                 <Header />
             )}
-            <MenuForProfile/>
             <Section1Lending/>
             <Section2Lending/>
             <Section3Lending/>

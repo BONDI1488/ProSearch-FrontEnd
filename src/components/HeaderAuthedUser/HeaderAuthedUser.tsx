@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useContext, useState} from 'react';
 import Logo from '../../img/logo12123.png';
 import classes from "./Header.module.css";
 import Login from '../../img/pngwing.com.png';
@@ -7,9 +7,12 @@ import Bag from '../../img/bag.png'
 import User from "../../img/pngwing.com.png";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {InterfaceContext} from "../../context";
+import MenuForProfile from "../MenuForProfile/MenuForProfile";
 
 // import jwt from 'jsonwebtoken';
 const HeaderAuthedUser = () => {
+    const { toggleDisplayProfileModalFun, isDisplayProfileModal } = useContext(InterfaceContext);
     const [userPhoto, setUserPhoto] = useState(User);
 
     const changePhoto = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,11 +46,6 @@ const HeaderAuthedUser = () => {
 //             return null;
 //         }
 //     };
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        window.location.reload();
-
-    };
 
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
@@ -71,7 +69,7 @@ const HeaderAuthedUser = () => {
                         <img src={Bag} alt=""/>
                     </button>
                 </div>
-                <div className='flex items-center	'>
+                <div className='flex items-center pointer' onClick={toggleDisplayProfileModalFun}>
                     <img
                         src={userPhoto}
                         alt=""
@@ -90,9 +88,11 @@ const HeaderAuthedUser = () => {
                         <p className='text-lg'>Профіль</p>
                         <p className='text-sm text-gray-500'>Замовника</p>
                     </div>
-                    <button onClick={handleLogout} className='text-sm'>Вийти</button>
                 </div>
             </div>
+            {
+                isDisplayProfileModal && <MenuForProfile/>
+            }
         </header>
     );
 };
