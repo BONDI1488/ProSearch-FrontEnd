@@ -13,39 +13,6 @@ import MenuForProfile from "../MenuForProfile/MenuForProfile";
 // import jwt from 'jsonwebtoken';
 const HeaderAuthedUser = () => {
     const { toggleDisplayProfileModalFun, isDisplayProfileModal } = useContext(InterfaceContext);
-    const [userPhoto, setUserPhoto] = useState(User);
-
-    const changePhoto = (event: ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const result = reader.result as string;
-                setUserPhoto(result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-// Використовуйте цю функцію для виклику при виборі фото
-//     const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
-//         const file = event.target.files?.[0];
-//         const token = localStorage.getItem('token');
-//         const userId = getUserIdFromToken(token);
-//         if (file) {
-//             changePhoto(YOUR_USER_ID, file);
-//         }
-//     };
-//     const getUserIdFromToken = (token: string) => {
-//         try {
-//             const decodedToken: any = jwt.verify(token, 'super-secret'); // Замініть 'your-secret-key' на ваш секретний ключ
-//             return decodedToken.id;
-//         } catch (error) {
-//             console.error('Error decoding token:', error);
-//             return null;
-//         }
-//     };
 
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
@@ -69,20 +36,12 @@ const HeaderAuthedUser = () => {
                         <img src={Bag} alt=""/>
                     </button>
                 </div>
-                <div className='flex items-center pointer' onClick={toggleDisplayProfileModalFun}>
+                <div className='flex items-center cursor-pointer px-4' onClick={toggleDisplayProfileModalFun}>
                     <img
-                        src={userPhoto}
+                        src={User}
                         alt=""
                         className='w-12 h-12 cursor-pointer rounded-full'
                         onClick={() => document.getElementById('photoInput')?.click()}
-                    />
-                    <input
-                        type="file"
-                        id="photoInput"
-                        name="photo"
-                        accept="image/*"
-                        style={{display: 'none'}}
-                        onChange={changePhoto}
                     />
                     <div className='pl-4'>
                         <p className='text-lg'>Профіль</p>
