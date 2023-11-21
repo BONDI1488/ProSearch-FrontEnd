@@ -10,9 +10,7 @@ import Bag from "../../img/bag.png";
 import User from "../../img/pngwing.com.png";
 const Header = () => {
     const { toggleDisplayProfileModalFun, toggleDisplayHeaderModalFun, isDisplayProfileModal, isDisplayHeaderModal, isSignupFormDisplay } = useContext(InterfaceContext);
-    const { authToken } = useContext(UserContext)
-
-    console.log('authToken', authToken)
+    const { authToken, userRole } = useContext(UserContext)
 
     return (
         <header className='bg-zinc-200 max-w-full h-72px'>
@@ -38,9 +36,15 @@ const Header = () => {
                         </div>
                         : <div className='flex justify-between'>
                             <div className='flex items-center mr-4'>
-                                <button>
-                                    <img src={Bag} alt=""/>
-                                </button>
+                                {
+                                    (userRole === 'user') ?
+                                        <Link to={'/user'}>
+                                            <img src={Bag} alt=""/>
+                                        </Link>
+                                    : <Link to={'/worker'}>
+                                        <img src={Bag} alt=""/>
+                                    </Link>
+                                }
                             </div>
 
                                 <div className='flex items-center cursor-pointer px-4' onClick={toggleDisplayProfileModalFun}>

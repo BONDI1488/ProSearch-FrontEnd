@@ -9,7 +9,7 @@ import { Login } from 'queries/api';
 const SignInForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { toggleSingupFormDisplayFun, toggleDisplayHeaderModalFun } = useContext(InterfaceContext)
-    const { setAuthToken } = useContext(UserContext)
+    const { setAuthToken, setUserRole } = useContext(UserContext)
 
     const formik = useFormik({
         initialValues: {
@@ -20,10 +20,13 @@ const SignInForm: React.FC = () => {
         onSubmit: async (values) => {
             try {
                 const response = await Login({email: values.email, password: values.password, type: values.role === false ? 'user' : 'worker'})
-                const receivedToken = response.data.token;
-                localStorage.setItem('token', JSON.stringify(receivedToken));
-                setAuthToken(response.data.token)
-                toggleDisplayHeaderModalFun()
+                // if (response.status === 200) {
+                    const receivedToken = response.data.token;
+                    localStorage.setItem('token', JSON.stringify(receivedToken));
+                    setAuthToken(response.data.token)
+                    toggleDisplayHeaderModalFun()
+                    if (values.role) setUserRole('worker'); else setUserRole('user');
+                // }
             } catch (error) {
                 console.error(error);
             }
