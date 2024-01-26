@@ -1,0 +1,16 @@
+.a{
+    text-align: center;
+    font-weight: lighter;
+    text-decoration: none;
+    color: black;
+}
+
+.a:hover {
+    text-decoration: underline;
+    color: #5757dc;
+}
+.closeButton{
+    left: 262px;
+    top: 22px;
+    position: absolute;
+}

@@ -1,0 +1,9 @@
+/* Додайте це в ваш CSS-файл або просто включіть його у ваш компонент */
+
+#city {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 8px;
+}
